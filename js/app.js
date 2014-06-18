@@ -41,15 +41,8 @@ angular.module('partyBand').controller('LinksCtrl', function ($scope) {
   ];
 });
 
-angular.module('partyBand').controller('ShowsCtrl', function ($scope) {
-  $scope.shows = [
-    {
-      name: 'Madsummer Meltdown',
-      date: 'June 18 2014'
-    },
-    {
-      name: 'Trombone Shorty',
-      date: 'July 10 2014'
-    }
-  ];
+angular.module('partyBand').controller('ShowsCtrl', function ($scope, $http) {
+  $http.get('data/shows.json').success(function (data) {
+    $scope.shows = data;
+  });
 });
