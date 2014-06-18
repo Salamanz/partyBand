@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<!--
+This page is an example of how to use AngularJS and Bootstrap for the Party Band site.
+
+For learning AngularJS, check out  https://www.youtube.com/watch?v=TRrL5j3MIvo
+
+Curran Kelleher 6/16/1024
+-->
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>The Party Band</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+    <script>
+      // Injects link data into the Angular template
+      function LinksCtrl($scope){
+        $scope.links = [
+          {
+            name: 'YouTube',
+            url: 'https://www.youtube.com/results?search_query=the+party+band+lowell'
+          },
+          { 
+            name: 'FaceBook',
+            url: 'https://www.facebook.com/RiverhawkPartyBand'
+          },
+          {
+            name: 'Twitter',
+            url: 'https://twitter.com/partybaaand'
+          },
+          {
+            name: 'Nice Bass Productions',
+            url: 'http://www.nicebassproductions.com/party-band/'
+          }
+        ];
+      }
+    </script>
+  </head>
+  <body>
+    <h1 class="text-center">The Party Band</h1>
+    <div class="text-center">
+      <!--
+        Use Bootstrap's nav-pills class for links
+        http://getbootstrap.com/components/#nav-pills
+        http://stackoverflow.com/questions/7165423/twitter-bootstrap-center-pills
+      -->
+      <ul class="nav nav-pills"
+          ng-controller="LinksCtrl"
+          style="display: inline-block;">
+        <!--
+          Expose each link from LinksCtrl as a pill
+        -->
+        <li ng-repeat="link in links">
+          <a href="{{link.url}}">
+            {{link.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- The image links to the ticket purchase page -->
+    <a href="http://lowellsummermusic.org/page.php?wpage=root/eventdetail.htm&Event=LSMS-E37568">
+      <!--
+        Uses Bootstrap's responsive image class for automatic resizing
+        http://getbootstrap.com/css/#images-responsive
+      -->
+      <img src="http://partybandlowell.com/PartyBandWebPage_files/image002.png" class="img-responsive" alt="Buy tickets!"/>
+    </a>
+  </body>
+</html>
