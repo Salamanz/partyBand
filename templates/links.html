@@ -1,0 +1,19 @@
+    <div class="text-center">
+      <!--
+        Use Bootstrap's nav-pills class for links
+        http://getbootstrap.com/components/#nav-pills
+        http://stackoverflow.com/questions/7165423/twitter-bootstrap-center-pills
+      -->
+      <ul class="nav nav-pills"
+          ng-controller="LinksCtrl"
+          style="display: inline-block;">
+        <!--
+          Expose each link from LinksCtrl as a pill
+        -->
+        <li ng-repeat="link in links">
+          <a href="{{link.url}}">
+            {{link.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
