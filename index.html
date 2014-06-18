@@ -11,51 +11,55 @@ Curran Kelleher 6/16/1024
   <head>
     <meta charset="utf-8">
     <title>The Party Band</title>
+
+    <!-- Bootstrap -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Angular -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script>
-      var app = angular.module('partyBand', ['ui.bootstrap', 'ui.router']);
 
-      // Draws from UI Router example http://plnkr.co/edit/u18KQc?p=preview
-      app.config(function($stateProvider, $urlRouterProvider){
-        $urlRouterProvider.otherwise('/home');
-        $stateProvider
-          .state('home', {
-            url: '/home',
-            templateUrl: 'templates/home.html'
-          })
-          .state('links', {
-            url: '/links',
-            templateUrl: 'templates/links.html',
-            controller: 'LinksCtrl'
-          });
-      });
-
-      angular.module('partyBand').controller('LinksCtrl', function ($scope) {
-        $scope.links = [
-          {
-            name: 'YouTube',
-            url: 'https://www.youtube.com/results?search_query=the+party+band+lowell'
-          },
-          { 
-            name: 'FaceBook',
-            url: 'https://www.facebook.com/RiverhawkPartyBand'
-          },
-          {
-            name: 'Twitter',
-            url: 'https://twitter.com/partybaaand'
-          },
-          {
-            name: 'Nice Bass Productions',
-            url: 'http://www.nicebassproductions.com/party-band/'
-          }
-        ];
-      });
-    </script>
+    <script src="js/app.js"></script>
   </head>
   <body>
+    <!-- Navigation bar draws from Bootstrap docs http://getbootstrap.com/components/#navbar -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="home">The Party Band</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="links">Links</a></li>
+            <li><a ui-sref="shows">Shows</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </div>
     <div ui-view></div>
   </body>
 </html>
